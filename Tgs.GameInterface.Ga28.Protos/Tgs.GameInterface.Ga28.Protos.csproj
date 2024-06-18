@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Grpc.AspNetCore" Version="2.63.0">
+			<PrivateAssets></PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.63.0">
+			<PrivateAssets></PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="PhoenixToolkits.Protobuf.ExtendTypes" Version="0.0.7">
+			<PrivateAssets></PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="GameInterfaceGa28.proto" />
+	</ItemGroup>
+
+</Project>

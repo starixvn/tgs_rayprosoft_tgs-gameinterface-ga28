@@ -1,0 +1,117 @@
+﻿syntax = "proto3";
+
+import "phoenix/protobuf/decimal.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Tgs.GameInterface.Ga28.Protos";
+
+package GameInterfaceGa28;
+
+service GameInterfaceGa28 {
+  rpc PlayerBalance (PlayerBalanceRequest) returns (PlayerBalanceReply);
+  rpc FundOut(FundRequest) returns (FundReply);
+  rpc FundIn (FundRequest) returns (FundReply);
+  rpc FundStatus(FundStatusRequest) returns (BaseReply);
+  rpc GameUrl (GameUrlRequest) returns (GameUrlReply);
+  rpc GameRecord (GameRecordRequest) returns (stream GameRecordInfo);
+  rpc CheckingService(CheckingServiceRequest) returns (CheckingServiceReply);
+}
+
+message BaseReply {
+	bool status = 1;
+}
+
+message PlayerBalanceRequest {
+	string api_url = 1;
+	string private_key = 2;
+	string player_code = 3;
+}
+
+message FundRequest {
+	string api_url = 1;
+	string private_key = 2;
+	string player_code = 3;
+	string order_id = 4;
+	phoenix.protobuf.DecimalValue amount = 5;
+}
+
+message FundStatusRequest {
+	string api_url = 1;
+	string private_key = 2;
+	string player_code = 3;
+	google.protobuf.Timestamp order_on = 4;
+	string order_id = 5;
+}
+
+message GameUrlRequest {
+	string api_url = 1;
+	string private_key = 2;
+	string merchant_id = 3;
+	string player_code = 4;
+}
+
+message GameRecordRequest {
+	string api_url = 1;
+	string private_key = 2;
+	string merchant_id = 3;
+	google.protobuf.Timestamp start_time = 4;
+	google.protobuf.Timestamp end_time = 5;
+	int32 page = 6;
+	int32 page_size = 7;
+}
+
+message CheckingServiceRequest{
+	string machine_name = 1;
+}
+
+message PlayerBalanceReply {
+	bool is_player_exists = 1;
+	phoenix.protobuf.DecimalValue balance = 2;
+}
+
+message FundReply {
+	string order_id = 1;
+	string external_order_id = 2;
+	phoenix.protobuf.DecimalValue balance = 3;
+	string resp = 4;
+}
+
+message GameUrlReply {
+	string game_url = 1;
+}
+
+message GameRecordInfo {
+	string player_code = 1;
+	string external_bet_id = 2;
+	string external_round_id = 3;
+	string external_game_id = 4;
+	bool is_closed = 5;
+	RecordResult Result = 6;
+	google.protobuf.Timestamp ExternalCreatedOn = 7;
+	google.protobuf.Timestamp ExternalClosedOn = 8;
+	phoenix.protobuf.DecimalValue Bet = 9;
+	phoenix.protobuf.DecimalValue ValidBet = 10;
+	phoenix.protobuf.DecimalValue Settle = 11;
+	phoenix.protobuf.DecimalValue WinLoss = 12;
+	string AdditionalData = 13;
+}
+
+message CheckingServiceReply{
+	string MachineName = 1;
+}
+
+enum RecordStatus {
+	RECORD_STATUS_OPENED = 0;
+	RECORD_STATUS_SETTLED = 1;
+	RECORD_STATUS_CANCELED = 2;
+	RECORD_STATUS_VOIDED = 3;
+}
+
+enum RecordResult {
+	RECORD_RESULT_NONE = 0;
+	RECORD_RESULT_WIN = 1;
+	RECORD_RESULT_LOSS = 2;
+	RECORD_RESULT_DRAW = 3;
+	RECORD_RESULT_VOID = 4;
+	RECORD_RESULT_CANCELLED = 5;
+}
