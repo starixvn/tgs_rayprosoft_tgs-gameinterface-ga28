@@ -17,7 +17,7 @@ public sealed class Ga28Controller : ControllerBase
 	/// {
 	///     "apiUrl": "http://partner-api.dev.ga28.cc",
 	///     "privateKey": "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-	///     "merchantId": "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+	///     "partnerAccountId": "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 	///     "playerCode": "4ucmqplxb029"
 	/// }
 	/// </remarks>
@@ -104,7 +104,7 @@ public sealed class Ga28Controller : ControllerBase
 	/// {
 	///     "apiUrl": "http://partner-api.dev.ga28.cc",
 	///     "privateKey": "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-	///     "merchantId": "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+	///     "partnerAccountId": "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 	///     "startTime": "2024-06-03T17:00:00+08:00",
 	///     "endTime": "2024-06-03T18:00:00+08:00",
 	///     "page": 1,
