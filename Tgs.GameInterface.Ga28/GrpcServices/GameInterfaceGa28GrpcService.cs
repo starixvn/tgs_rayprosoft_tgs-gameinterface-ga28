@@ -31,7 +31,7 @@ internal sealed class GameInterfaceGa28GrpcService(
 		var query = new GameUrlQuery(
 			ApiUrl: new Uri(request.ApiUrl),
 			PrivateKey: request.PrivateKey,
-			MerchantId: request.MerchantId,
+			PartnerAccountId: request.PartnerAccountId,
 			PlayerCode: request.PlayerCode);
 
 		var result = await gameUrlService.GetAsync(
@@ -135,7 +135,7 @@ internal sealed class GameInterfaceGa28GrpcService(
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new Uri(request.ApiUrl),
 			PrivateKey: request.PrivateKey,
-			MerchantId: request.MerchantId,
+			PartnerAccountId: request.PartnerAccountId,
 			StartTime: request.StartTime.ToDateTimeOffset(),
 			EndTime: request.EndTime.ToDateTimeOffset(),
 			request.Page,

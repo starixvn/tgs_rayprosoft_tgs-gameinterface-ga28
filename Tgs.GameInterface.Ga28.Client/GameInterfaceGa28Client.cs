@@ -23,13 +23,13 @@ internal sealed class GameInterfaceGa28Client(
 		return reply.MachineName;
 	}
 
-	public async ValueTask<GameUrlReply> GameUrlAsync(Uri apiUrl, string privateKey, string merchantId, string playerCode, CancellationToken cancellationToken = default)
+	public async ValueTask<GameUrlReply> GameUrlAsync(Uri apiUrl, string privateKey, string partnerAccountId, string playerCode, CancellationToken cancellationToken = default)
 	{
 		var request = new GameUrlRequest
 		{
 			ApiUrl = apiUrl.ToString(),
 			PrivateKey = privateKey,
-			MerchantId = merchantId,
+			PartnerAccountId = partnerAccountId,
 			PlayerCode = playerCode,
 		};
 
@@ -104,13 +104,13 @@ internal sealed class GameInterfaceGa28Client(
 		return reply.Status;
 	}
 
-	public async IAsyncEnumerable<GameRecordInfo> GameRecordAsync(Uri apiUrl, string privateKey, string merchantId, DateTimeOffset startTime, DateTimeOffset endTime, int page = 1, int pageSize = 32, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+	public async IAsyncEnumerable<GameRecordInfo> GameRecordAsync(Uri apiUrl, string privateKey, string partnerAccountId, DateTimeOffset startTime, DateTimeOffset endTime, int page = 1, int pageSize = 32, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		var request = new GameRecordRequest
 		{
 			ApiUrl = apiUrl.ToString(),
 			PrivateKey = privateKey,
-			MerchantId = merchantId,
+			PartnerAccountId = partnerAccountId,
 			StartTime = startTime.ToTimestamp(),
 			EndTime = endTime.ToTimestamp(),
 			Page = page,

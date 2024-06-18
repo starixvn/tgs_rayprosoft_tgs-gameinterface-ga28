@@ -23,14 +23,14 @@ public sealed class GameApiClient_TicketsTest
 		var pageSize = 32;
 		var fromModifiedTime = new DateTimeOffset(2024, 06, 13, 16, 00, 00, TimeSpan.FromHours(8));
 		var toModifiedTime = new DateTimeOffset(2024, 06, 13, 16, 10, 00, TimeSpan.FromHours(8));
-		var accountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
+		var partnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
 		var parameters = new Dictionary<string, string>
 		{
 			["page"] = page.ToString(),
 			["page_size"] = pageSize.ToString(),
 			["from_modified_date_time"] = TimeZoneInfo.ConvertTime(fromModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
 			["to_modified_date_time"] = TimeZoneInfo.ConvertTime(toModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
-			["account_id"] = accountId,
+			["account_id"] = partnerAccountId,
 		};
 		var response = JsonNode.Parse("""
 		[
@@ -73,11 +73,11 @@ public sealed class GameApiClient_TicketsTest
 		var actual = await sut.TicketsAsync(
 			apiBaseUrl,
 			privateKey,
+			partnerAccountId,
 			page,
 			pageSize,
 			fromModifiedTime,
-			toModifiedTime,
-			accountId)
+			toModifiedTime)
 			.ToArrayAsync()
 			.ConfigureAwait(true);
 
@@ -109,14 +109,14 @@ public sealed class GameApiClient_TicketsTest
 		var pageSize = 32;
 		var fromModifiedTime = new DateTimeOffset(2024, 06, 13, 16, 00, 00, TimeSpan.FromHours(8));
 		var toModifiedTime = new DateTimeOffset(2024, 06, 13, 16, 10, 00, TimeSpan.FromHours(8));
-		var accountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
+		var partnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
 		var parameters = new Dictionary<string, string>
 		{
 			["page"] = page.ToString(),
 			["page_size"] = pageSize.ToString(),
 			["from_modified_date_time"] = TimeZoneInfo.ConvertTime(fromModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
 			["to_modified_date_time"] = TimeZoneInfo.ConvertTime(toModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
-			["account_id"] = accountId,
+			["account_id"] = partnerAccountId,
 		};
 		var response = JsonNode.Parse("""
 		[
@@ -159,11 +159,11 @@ public sealed class GameApiClient_TicketsTest
 		var actual = await sut.TicketsAsync(
 			apiBaseUrl,
 			privateKey,
+			partnerAccountId,
 			page,
 			pageSize,
 			fromModifiedTime,
-			toModifiedTime,
-			accountId)
+			toModifiedTime)
 			.ToArrayAsync()
 			.ConfigureAwait(true);
 
@@ -195,14 +195,14 @@ public sealed class GameApiClient_TicketsTest
 		var pageSize = 32;
 		var fromModifiedTime = new DateTimeOffset(2024, 06, 13, 16, 00, 00, TimeSpan.FromHours(8));
 		var toModifiedTime = new DateTimeOffset(2024, 06, 13, 16, 10, 00, TimeSpan.FromHours(8));
-		var accountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
+		var partnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
 		var parameters = new Dictionary<string, string>
 		{
 			["page"] = page.ToString(),
 			["page_size"] = pageSize.ToString(),
 			["from_modified_date_time"] = TimeZoneInfo.ConvertTime(fromModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
 			["to_modified_date_time"] = TimeZoneInfo.ConvertTime(toModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
-			["account_id"] = accountId,
+			["account_id"] = partnerAccountId,
 		};
 		var response = JsonNode.Parse("""
 		[
@@ -245,11 +245,11 @@ public sealed class GameApiClient_TicketsTest
 		var actual = await sut.TicketsAsync(
 			apiBaseUrl,
 			privateKey,
+			partnerAccountId,
 			page,
 			pageSize,
 			fromModifiedTime,
-			toModifiedTime,
-			accountId)
+			toModifiedTime)
 			.ToArrayAsync()
 			.ConfigureAwait(true);
 
@@ -281,14 +281,14 @@ public sealed class GameApiClient_TicketsTest
 		var pageSize = 32;
 		var fromModifiedTime = new DateTimeOffset(2024, 06, 18, 10, 15, 00, TimeSpan.FromHours(8));
 		var toModifiedTime = new DateTimeOffset(2024, 06, 18, 10, 25, 00, TimeSpan.FromHours(8));
-		var accountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
+		var partnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
 		var parameters = new Dictionary<string, string>
 		{
 			["page"] = page.ToString(),
 			["page_size"] = pageSize.ToString(),
 			["from_modified_date_time"] = TimeZoneInfo.ConvertTime(fromModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
 			["to_modified_date_time"] = TimeZoneInfo.ConvertTime(toModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
-			["account_id"] = accountId,
+			["account_id"] = partnerAccountId,
 		};
 		var response = JsonNode.Parse("""
 		[
@@ -331,11 +331,11 @@ public sealed class GameApiClient_TicketsTest
 		var actual = await sut.TicketsAsync(
 			apiBaseUrl,
 			privateKey,
+			partnerAccountId,
 			page,
 			pageSize,
 			fromModifiedTime,
-			toModifiedTime,
-			accountId)
+			toModifiedTime)
 			.ToArrayAsync()
 			.ConfigureAwait(true);
 
@@ -367,14 +367,14 @@ public sealed class GameApiClient_TicketsTest
 		var pageSize = 32;
 		var fromModifiedTime = new DateTimeOffset(2024, 06, 18, 10, 50, 00, TimeSpan.FromHours(8));
 		var toModifiedTime = new DateTimeOffset(2024, 06, 18, 11, 00, 00, TimeSpan.FromHours(8));
-		var accountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
+		var partnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
 		var parameters = new Dictionary<string, string>
 		{
 			["page"] = page.ToString(),
 			["page_size"] = pageSize.ToString(),
 			["from_modified_date_time"] = TimeZoneInfo.ConvertTime(fromModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
 			["to_modified_date_time"] = TimeZoneInfo.ConvertTime(toModifiedTime.ToUniversalTime(), _TimeZone).ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
-			["account_id"] = accountId,
+			["account_id"] = partnerAccountId,
 		};
 		var response = JsonNode.Parse("""
 		[
@@ -417,11 +417,11 @@ public sealed class GameApiClient_TicketsTest
 		var actual = await sut.TicketsAsync(
 			apiBaseUrl,
 			privateKey,
+			partnerAccountId,
 			page,
 			pageSize,
 			fromModifiedTime,
-			toModifiedTime,
-			accountId)
+			toModifiedTime)
 			.ToArrayAsync()
 			.ConfigureAwait(true);
 

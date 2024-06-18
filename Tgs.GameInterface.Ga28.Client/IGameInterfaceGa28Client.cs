@@ -6,7 +6,7 @@ public interface IGameInterfaceGa28Client
 {
 	ValueTask<string> CheckingServiceAsync(string machineName, CancellationToken cancellationToken = default);
 
-	ValueTask<GameUrlReply> GameUrlAsync(Uri apiUrl, string privateKey, string merchantId, string playerCode, CancellationToken cancellationToken = default);
+	ValueTask<GameUrlReply> GameUrlAsync(Uri apiUrl, string privateKey, string partnerAccountId, string playerCode, CancellationToken cancellationToken = default);
 
 	ValueTask<PlayerBalanceReply> PlayerBalanceAsync(Uri apiUrl, string privateKey, string playerCode, CancellationToken cancellationToken = default);
 
@@ -16,5 +16,5 @@ public interface IGameInterfaceGa28Client
 
 	ValueTask<bool> FundStatusAsync(Uri apiUrl, string privateKey, string playerCode, DateTimeOffset orderOn, string orderId, CancellationToken cancellationToken = default);
 
-	IAsyncEnumerable<GameRecordInfo> GameRecordAsync(Uri apiUrl, string privateKey, string merchantId, DateTimeOffset startTime, DateTimeOffset endTime, int page = 1, int pageSize = 32, CancellationToken cancellationToken = default);
+	IAsyncEnumerable<GameRecordInfo> GameRecordAsync(Uri apiUrl, string privateKey, string partnerAccountId, DateTimeOffset startTime, DateTimeOffset endTime, int page = 1, int pageSize = 32, CancellationToken cancellationToken = default);
 }

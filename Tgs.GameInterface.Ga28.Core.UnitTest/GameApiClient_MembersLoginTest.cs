@@ -14,11 +14,11 @@ public sealed class GameApiClient_MembersLoginTest
 		var apiBaseUrl = new Uri("http://partner-api.dev.ga28.cc");
 		var privateKey = "8456c9de-d589-4e8a-876f-c9c8e48dda3e";
 		var memberRefId = "4ucmqplxb029";
-		var accountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
+		var partnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771";
 		var parameters = new Dictionary<string, string>
 		{
 			["member_ref_id"] = memberRefId,
-			["account_id"] = accountId,
+			["account_id"] = partnerAccountId,
 		};
 		var response = JsonNode.Parse("""
 		{
@@ -46,8 +46,8 @@ public sealed class GameApiClient_MembersLoginTest
 		var actual = await sut.MembersLoginAsync(
 			apiBaseUrl,
 			privateKey,
-			memberRefId,
-			accountId)
+			partnerAccountId,
+			memberRefId)
 			.ConfigureAwait(true);
 
 		Assert.Equal("https://xxx.xxx.xxx/xxx?xxx=xxx", actual);

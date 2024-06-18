@@ -5,13 +5,13 @@ namespace Tgs.GameInterface.Ga28.Core;
 
 internal sealed partial class GameApiClient
 {
-	public async ValueTask<string> MembersLoginAsync(Uri apiBaseUrl, string privateKey, string memberRefId, string accountId, CancellationToken cancellationToken = default)
+	public async ValueTask<string> MembersLoginAsync(Uri apiBaseUrl, string privateKey, string partnerAccountId, string memberRefId, CancellationToken cancellationToken = default)
 	{
 		var relativeUrl = "/api/v1/members/login";
 		var parameters = new Dictionary<string, string>
 		{
 			["member_ref_id"] = memberRefId,
-			["account_id"] = accountId,
+			["account_id"] = partnerAccountId,
 		};
 		var logPrefix = nameof(MembersLoginAsync);
 

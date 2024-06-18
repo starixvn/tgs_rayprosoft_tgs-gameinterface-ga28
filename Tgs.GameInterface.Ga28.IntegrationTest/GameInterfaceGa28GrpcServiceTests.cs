@@ -36,13 +36,13 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 		{
 			ApiUrl = "http://partner-api.dev.ga28.cc",
 			PrivateKey = "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			PlayerCode = "4ucmqplxb029",
 		};
 		var serviceRequest = new GameUrlQuery(
 			ApiUrl: new Uri(grpcRequest.ApiUrl),
 			PrivateKey: grpcRequest.PrivateKey,
-			MerchantId: grpcRequest.MerchantId,
+			PartnerAccountId: grpcRequest.PartnerAccountId,
 			PlayerCode: grpcRequest.PlayerCode);
 		var serviceResponse = "https://xxx.xxx.xxx/xxx?xxx=xxx";
 		var fakeService = Substitute.For<IGetService<GameUrlQuery, string>>();
@@ -65,7 +65,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 		var actual = await sut.GameUrlAsync(
 			apiUrl: new Uri(grpcRequest.ApiUrl),
 			privateKey: grpcRequest.PrivateKey,
-			merchantId: grpcRequest.MerchantId,
+			partnerAccountId: grpcRequest.PartnerAccountId,
 			playerCode: grpcRequest.PlayerCode)
 			.ConfigureAwait(true);
 
@@ -79,7 +79,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 		{
 			ApiUrl = "http://partner-api.dev.ga28.cc",
 			PrivateKey = "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			PlayerCode = "4ucmqplxb029",
 		};
 		var serviceRequest = new PlayerBalanceQuery(
@@ -306,7 +306,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 		{
 			ApiUrl = "http://partner-api.dev.ga28.cc",
 			PrivateKey = "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime = new DateTimeOffset(2024, 06, 13, 14, 00, 00, offset: TimeSpan.FromHours(8)).ToTimestamp(),
 			EndTime = new DateTimeOffset(2024, 06, 13, 14, 59, 59, offset: TimeSpan.FromHours(8)).ToTimestamp(),
 			Page = 1,
@@ -315,7 +315,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 		var serviceRequest = new GameRecordBetLogQuery(
 			ApiUrl: new Uri(grpcRequest.ApiUrl),
 			PrivateKey: grpcRequest.PrivateKey,
-			MerchantId: grpcRequest.MerchantId,
+			PartnerAccountId: grpcRequest.PartnerAccountId,
 			StartTime: grpcRequest.StartTime.ToDateTimeOffset(),
 			EndTime: grpcRequest.EndTime.ToDateTimeOffset(),
 			Page: grpcRequest.Page,
@@ -378,7 +378,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 		var actual = await sut.GameRecordAsync(
 			apiUrl: new Uri(grpcRequest.ApiUrl),
 			privateKey: grpcRequest.PrivateKey,
-			merchantId: grpcRequest.MerchantId,
+			partnerAccountId: grpcRequest.PartnerAccountId,
 			startTime: grpcRequest.StartTime.ToDateTimeOffset(),
 			endTime: grpcRequest.EndTime.ToDateTimeOffset(),
 			page: grpcRequest.Page,

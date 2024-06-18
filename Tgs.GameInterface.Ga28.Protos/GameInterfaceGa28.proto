@@ -46,14 +46,14 @@ message FundStatusRequest {
 message GameUrlRequest {
 	string api_url = 1;
 	string private_key = 2;
-	string merchant_id = 3;
+	string partner_account_id = 3;
 	string player_code = 4;
 }
 
 message GameRecordRequest {
 	string api_url = 1;
 	string private_key = 2;
-	string merchant_id = 3;
+	string partner_account_id = 3;
 	google.protobuf.Timestamp start_time = 4;
 	google.protobuf.Timestamp end_time = 5;
 	int32 page = 6;

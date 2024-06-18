@@ -3,7 +3,7 @@
 public sealed record class GameRecordBetLogQuery(
 	Uri ApiUrl,
 	string PrivateKey,
-	string MerchantId,
+	string PartnerAccountId,
 	DateTimeOffset StartTime,
 	DateTimeOffset EndTime,
 	int Page,

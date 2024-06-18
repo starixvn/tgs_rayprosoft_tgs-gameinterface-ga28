@@ -10,11 +10,12 @@ public sealed class GameRecordBetLogQueryService(IGameApiClient apiClient) : IQu
 		var response = apiClient.TicketsAsync(
 			apiBaseUrl: query.ApiUrl,
 			privateKey: query.PrivateKey,
+			partnerAccountId: query.PartnerAccountId,
 			page: query.Page,
 			pageSize: query.PageSize,
 			fromModifiedTime: query.StartTime,
 			toModifiedTime: query.EndTime,
-			accountId: query.MerchantId,
+
 			cancellationToken);
 
 		await foreach (var item in response)

@@ -7,7 +7,7 @@ namespace Tgs.GameInterface.Ga28.Core;
 
 internal sealed partial class GameApiClient
 {
-	public async IAsyncEnumerable<TicketResponseItem> TicketsAsync(Uri apiBaseUrl, string privateKey, int page, int pageSize, DateTimeOffset fromModifiedTime, DateTimeOffset toModifiedTime, string accountId, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+	public async IAsyncEnumerable<TicketResponseItem> TicketsAsync(Uri apiBaseUrl, string privateKey, string partnerAccountId, int page, int pageSize, DateTimeOffset fromModifiedTime, DateTimeOffset toModifiedTime, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		var relativeUrl = "/api/v1/tickets/";
 		var parameters = new Dictionary<string, string>
@@ -16,7 +16,7 @@ internal sealed partial class GameApiClient
 			["page_size"] = pageSize.ToString(),
 			["from_modified_date_time"] = _dateTimeConverter.DatetimeConvertToString(fromModifiedTime),
 			["to_modified_date_time"] = _dateTimeConverter.DatetimeConvertToString(toModifiedTime),
-			["account_id"] = accountId,
+			["account_id"] = partnerAccountId,
 		};
 		var logPrefix = nameof(TicketsAsync);
 

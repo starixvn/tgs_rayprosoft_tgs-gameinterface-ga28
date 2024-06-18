@@ -9,8 +9,8 @@ public sealed class GameUrlGetService(IGameApiClient apiClient) : IGetService<Ga
 		var response = await apiClient.MembersLoginAsync(
 			apiBaseUrl: query.ApiUrl,
 			privateKey: query.PrivateKey,
+			partnerAccountId: query.PartnerAccountId,
 			memberRefId: query.PlayerCode,
-			accountId: query.MerchantId,
 			cancellationToken).
 			ConfigureAwait(false);
 

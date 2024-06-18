@@ -1,12 +1,13 @@
-﻿using Tgs.GameInterface.Ga28.Core.Models;
+﻿using System.Security.Principal;
+using Tgs.GameInterface.Ga28.Core.Models;
 
 namespace Tgs.GameInterface.Ga28.Core;
 
 public interface IGameApiClient
 {
-	ValueTask<string> MembersLoginAsync(Uri apiBaseUrl, string privateKey, string memberRefId, string accountId, CancellationToken cancellationToken = default);
+	ValueTask<string> MembersLoginAsync(Uri apiBaseUrl, string privateKey, string partnerAccountId, string memberRefId, CancellationToken cancellationToken = default);
 
-	IAsyncEnumerable<TicketResponseItem> TicketsAsync(Uri apiBaseUrl, string privateKey, int page, int pageSize, DateTimeOffset fromModifiedTime, DateTimeOffset toModifiedTime, string accountId, CancellationToken cancellationToken = default);
+	IAsyncEnumerable<TicketResponseItem> TicketsAsync(Uri apiBaseUrl, string privateKey, string partnerAccountId, int page, int pageSize, DateTimeOffset fromModifiedTime, DateTimeOffset toModifiedTime, CancellationToken cancellationToken = default);
 
 	ValueTask<WalletBalanceResponse> WalletBalanceAsync(Uri apiBaseUrl, string privateKey, string memberRefId, CancellationToken cancellationToken = default);
 

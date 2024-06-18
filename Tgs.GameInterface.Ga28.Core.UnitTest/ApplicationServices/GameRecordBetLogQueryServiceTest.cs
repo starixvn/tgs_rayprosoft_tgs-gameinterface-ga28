@@ -13,7 +13,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -68,11 +68,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -99,7 +99,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -154,11 +154,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -185,7 +185,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 18, 10, 15, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 18, 10, 25, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -240,11 +240,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -271,7 +271,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 18, 10, 15, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 18, 10, 25, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -326,11 +326,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -357,7 +357,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -412,11 +412,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -443,7 +443,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -498,11 +498,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -519,7 +519,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -574,11 +574,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -595,7 +595,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -650,11 +650,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -671,7 +671,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -726,11 +726,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -747,7 +747,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -802,11 +802,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -823,7 +823,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -878,11 +878,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -899,7 +899,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -954,11 +954,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -975,7 +975,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -1030,11 +1030,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -1051,7 +1051,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -1106,11 +1106,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -1127,7 +1127,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -1182,11 +1182,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -1203,7 +1203,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -1258,11 +1258,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
@@ -1279,7 +1279,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var query = new GameRecordBetLogQuery(
 			ApiUrl: new("http://partner-api.dev.ga28.cc"),
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
-			MerchantId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
 			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
 			Page: 1,
@@ -1334,11 +1334,11 @@ public sealed class GameRecordBetLogQueryServiceTest
 			.TicketsAsync(
 				apiBaseUrl: Arg.Is(query.ApiUrl),
 				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
 				page: Arg.Is(query.Page),
 				pageSize: Arg.Is(query.PageSize),
 				fromModifiedTime: Arg.Is(query.StartTime),
-				toModifiedTime: Arg.Is(query.EndTime),
-				accountId: Arg.Is(query.MerchantId))
+				toModifiedTime: Arg.Is(query.EndTime))
 			.Returns(new[] { response }.ToAsyncEnumerable());
 		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
 
