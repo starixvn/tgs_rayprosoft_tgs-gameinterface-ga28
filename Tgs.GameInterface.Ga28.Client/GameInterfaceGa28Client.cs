@@ -5,8 +5,7 @@ using Tgs.GameInterface.Ga28.Protos;
 namespace Tgs.GameInterface.Ga28.Client;
 
 internal sealed class GameInterfaceGa28Client(
-	GameInterfaceGa28.GameInterfaceGa28Client client)
-	: IGameInterfaceGa28Client
+	GameInterfaceGa28.GameInterfaceGa28Client client) : IGameInterfaceGa28Client
 {
 	public async ValueTask<string> CheckingServiceAsync(string machineName, CancellationToken cancellationToken = default)
 	{
@@ -23,7 +22,7 @@ internal sealed class GameInterfaceGa28Client(
 		return reply.MachineName;
 	}
 
-	public async ValueTask<GameUrlReply> GameUrlAsync(Uri apiUrl, string privateKey, string partnerAccountId, string playerCode, CancellationToken cancellationToken = default)
+	public async ValueTask<GameUrlReply> GameUrlAsync(Uri apiUrl, string privateKey, string partnerAccountId, string playerCode, string language, CancellationToken cancellationToken = default)
 	{
 		var request = new GameUrlRequest
 		{
@@ -31,6 +30,7 @@ internal sealed class GameInterfaceGa28Client(
 			PrivateKey = privateKey,
 			PartnerAccountId = partnerAccountId,
 			PlayerCode = playerCode,
+			Language = language,
 		};
 
 		return await client.GameUrlAsync(

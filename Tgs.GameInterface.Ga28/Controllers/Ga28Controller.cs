@@ -6,8 +6,6 @@ namespace Tgs.GameInterface.Ga28.Controllers;
 
 [Route("[controller]/[action]")]
 [ApiController]
-[Produces("application/json")]
-[Consumes("application/json")]
 public sealed class Ga28Controller : ControllerBase
 {
 	/// <remarks>
@@ -18,7 +16,8 @@ public sealed class Ga28Controller : ControllerBase
 	///     "apiUrl": "http://partner-api.dev.ga28.cc",
 	///     "privateKey": "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
 	///     "partnerAccountId": "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
-	///     "playerCode": "4ucmqplxb029"
+	///     "playerCode": "4ucmqplxb029",
+	///     "language": "en"
 	/// }
 	/// </remarks>
 	[HttpPost]

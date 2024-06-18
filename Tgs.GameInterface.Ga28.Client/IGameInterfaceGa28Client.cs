@@ -6,7 +6,7 @@ public interface IGameInterfaceGa28Client
 {
 	ValueTask<string> CheckingServiceAsync(string machineName, CancellationToken cancellationToken = default);
 
-	ValueTask<GameUrlReply> GameUrlAsync(Uri apiUrl, string privateKey, string partnerAccountId, string playerCode, CancellationToken cancellationToken = default);
+	ValueTask<GameUrlReply> GameUrlAsync(Uri apiUrl, string privateKey, string partnerAccountId, string playerCode, string language, CancellationToken cancellationToken = default);
 
 	ValueTask<PlayerBalanceReply> PlayerBalanceAsync(Uri apiUrl, string privateKey, string playerCode, CancellationToken cancellationToken = default);
 

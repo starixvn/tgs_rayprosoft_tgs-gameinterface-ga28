@@ -23,7 +23,7 @@ public sealed class GameApiClient_MembersLoginTest
 		var response = JsonNode.Parse("""
 		{
 			"token": "ea23026e-80bc-482a-9465-8f89c4e8a38d",
-			"game_client_url": "https://xxx.xxx.xxx/xxx?xxx=xxx",
+			"game_client_url": "http://gc-dev.ga28.cc/launch?member_token=8d475cde-b3af-4a37-aa00-3eda04018b2d",
 			"member": {
 				"member_ref_id": "4ucmqplxb029",
 				"display_name": "4ucmqplxb029",
@@ -50,6 +50,6 @@ public sealed class GameApiClient_MembersLoginTest
 			memberRefId)
 			.ConfigureAwait(true);
 
-		Assert.Equal("https://xxx.xxx.xxx/xxx?xxx=xxx", actual);
+		Assert.Equal("http://gc-dev.ga28.cc/launch?member_token=8d475cde-b3af-4a37-aa00-3eda04018b2d", actual);
 	}
 }

@@ -28,12 +28,12 @@ internal sealed partial class GameApiClient
 		{
 			(HttpStatusCode.OK, string json) when JsonNode.Parse(json) is JsonNode node
 				=> new WalletBalanceResponse(
-					IsPlayerExists: true,
+					IsPlayerExist: true,
 					Balance: decimal.Parse(node["balance"]!.GetValue<string>()!)),
 
 			(HttpStatusCode.BadRequest, _) // 尚未登入創建帳號會回這個
 				=> new WalletBalanceResponse(
-					IsPlayerExists: false,
+					IsPlayerExist: false,
 					Balance: 0m),
 
 			_ => throw new HttpRequestException(HttpRequestError.InvalidResponse, statusCode: statusCode),

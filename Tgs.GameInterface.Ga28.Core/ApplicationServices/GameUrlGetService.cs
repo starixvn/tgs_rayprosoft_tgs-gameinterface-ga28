@@ -1,4 +1,5 @@
-﻿using Tgs.ServiceUtility;
+﻿using System.Web;
+using Tgs.ServiceUtility;
 
 namespace Tgs.GameInterface.Ga28.Core.ApplicationServices;
 
@@ -6,7 +7,7 @@ public sealed class GameUrlGetService(IGameApiClient apiClient) : IGetService<Ga
 {
 	public async ValueTask<string> GetAsync(GameUrlQuery query, CancellationToken cancellationToken = default)
 	{
-		var response = await apiClient.MembersLoginAsync(
+		var gameUrl = await apiClient.MembersLoginAsync(
 			apiBaseUrl: query.ApiUrl,
 			privateKey: query.PrivateKey,
 			partnerAccountId: query.PartnerAccountId,
@@ -14,6 +15,12 @@ public sealed class GameUrlGetService(IGameApiClient apiClient) : IGetService<Ga
 			cancellationToken).
 			ConfigureAwait(false);
 
-		return response;
+		var path = new Uri(gameUrl);
+		var builder = new UriBuilder(path);
+		var parseQuery = HttpUtility.ParseQueryString(builder.Query);
+		parseQuery["language"] = query.Language;
+		builder.Query = parseQuery.ToString();
+
+		return HttpUtility.UrlDecode(builder.ToString());
 	}
 }

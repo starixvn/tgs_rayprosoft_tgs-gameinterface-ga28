@@ -32,7 +32,8 @@ internal sealed class GameInterfaceGa28GrpcService(
 			ApiUrl: new Uri(request.ApiUrl),
 			PrivateKey: request.PrivateKey,
 			PartnerAccountId: request.PartnerAccountId,
-			PlayerCode: request.PlayerCode);
+			PlayerCode: request.PlayerCode,
+			Language: request.Language);
 
 		var result = await gameUrlService.GetAsync(
 			query: query,
@@ -59,7 +60,7 @@ internal sealed class GameInterfaceGa28GrpcService(
 
 		return new PlayerBalanceReply
 		{
-			IsPlayerExists = result.IsPlayerExists,
+			IsPlayerExist = result.IsPlayerExist,
 			Balance = result.Balance
 		};
 	}

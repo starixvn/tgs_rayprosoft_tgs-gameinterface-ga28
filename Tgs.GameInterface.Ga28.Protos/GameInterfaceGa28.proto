@@ -48,6 +48,7 @@ message GameUrlRequest {
 	string private_key = 2;
 	string partner_account_id = 3;
 	string player_code = 4;
+	string language = 5;
 }
 
 message GameRecordRequest {
@@ -65,7 +66,7 @@ message CheckingServiceRequest{
 }
 
 message PlayerBalanceReply {
-	bool is_player_exists = 1;
+	bool is_player_exist = 1;
 	phoenix.protobuf.DecimalValue balance = 2;
 }
 

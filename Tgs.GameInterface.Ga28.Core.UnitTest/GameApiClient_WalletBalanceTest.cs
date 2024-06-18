@@ -39,7 +39,7 @@ public sealed class GameApiClient_WalletBalanceTest
 			memberRefId)
 			.ConfigureAwait(true);
 
-		Assert.True(actual.IsPlayerExists);
+		Assert.True(actual.IsPlayerExist);
 		Assert.Equal(10.5m, actual.Balance);
 	}
 
@@ -69,7 +69,7 @@ public sealed class GameApiClient_WalletBalanceTest
 			memberRefId)
 			.ConfigureAwait(true);
 
-		Assert.False(actual.IsPlayerExists);
+		Assert.False(actual.IsPlayerExist);
 		Assert.Equal(0m, actual.Balance);
 	}
 }

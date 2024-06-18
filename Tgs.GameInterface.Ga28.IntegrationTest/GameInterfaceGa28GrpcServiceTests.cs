@@ -38,18 +38,19 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 			PrivateKey = "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
 			PartnerAccountId = "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
 			PlayerCode = "4ucmqplxb029",
+			Language = "en",
 		};
 		var serviceRequest = new GameUrlQuery(
 			ApiUrl: new Uri(grpcRequest.ApiUrl),
 			PrivateKey: grpcRequest.PrivateKey,
 			PartnerAccountId: grpcRequest.PartnerAccountId,
-			PlayerCode: grpcRequest.PlayerCode);
-		var serviceResponse = "https://xxx.xxx.xxx/xxx?xxx=xxx";
+			PlayerCode: grpcRequest.PlayerCode,
+			Language: grpcRequest.Language);
+		var serviceResponse = "http://gc-dev.ga28.cc:80/launch?member_token=8d475cde-b3af-4a37-aa00-3eda04018b2d&language=en";
 		var fakeService = Substitute.For<IGetService<GameUrlQuery, string>>();
-		fakeService
-			.GetAsync(
-				query: Arg.Is(serviceRequest),
-				cancellationToken: Arg.Any<CancellationToken>())
+		_ = fakeService.GetAsync(
+			query: Arg.Is(serviceRequest),
+			cancellationToken: Arg.Any<CancellationToken>())
 			.Returns(ValueTask.FromResult(serviceResponse));
 		var factory = new WebApplicationFactory<Program>()
 			.WithWebHostBuilder(builder => builder.ConfigureServices(services =>
@@ -66,10 +67,11 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 			apiUrl: new Uri(grpcRequest.ApiUrl),
 			privateKey: grpcRequest.PrivateKey,
 			partnerAccountId: grpcRequest.PartnerAccountId,
-			playerCode: grpcRequest.PlayerCode)
+			playerCode: grpcRequest.PlayerCode,
+			language: grpcRequest.Language)
 			.ConfigureAwait(true);
 
-		Assert.Equal("https://xxx.xxx.xxx/xxx?xxx=xxx", actual.GameUrl);
+		Assert.Equal("http://gc-dev.ga28.cc:80/launch?member_token=8d475cde-b3af-4a37-aa00-3eda04018b2d&language=en", actual.GameUrl);
 	}
 
 	[Fact]
@@ -87,7 +89,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 			PrivateKey: grpcRequest.PrivateKey,
 			PlayerCode: grpcRequest.PlayerCode);
 		var serviceResponse = new PlayerBalanceResult(
-			IsPlayerExists: true,
+			IsPlayerExist: true,
 			Balance: 12m);
 		var fakeService = Substitute.For<IGetService<PlayerBalanceQuery, PlayerBalanceResult>>();
 		fakeService
@@ -113,7 +115,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 			.ConfigureAwait(true);
 
 		Assert.NotNull(actual);
-		Assert.True(actual.IsPlayerExists);
+		Assert.True(actual.IsPlayerExist);
 		Assert.Equal(12m, actual.Balance.ToDecimal());
 	}
 

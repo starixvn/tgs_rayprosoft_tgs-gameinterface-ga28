@@ -4,4 +4,5 @@ public sealed record class GameUrlQuery(
 	Uri ApiUrl,
 	string PrivateKey,
 	string PartnerAccountId,
-	string PlayerCode);
+	string PlayerCode,
+	string Language);

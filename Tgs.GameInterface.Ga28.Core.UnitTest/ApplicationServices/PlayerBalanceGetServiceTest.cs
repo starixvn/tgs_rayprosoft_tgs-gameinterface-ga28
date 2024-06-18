@@ -14,7 +14,7 @@ public sealed class PlayerBalanceGetServiceTest
 			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
 			PlayerCode: "4ucmqplxb029");
 		var response = new WalletBalanceResponse(
-			IsPlayerExists: true,
+			IsPlayerExist: true,
 			Balance: 66.6m);
 		var fakeGameApiClient = Substitute.For<IGameApiClient>();
 		_ = fakeGameApiClient
@@ -28,7 +28,7 @@ public sealed class PlayerBalanceGetServiceTest
 
 		var actual = await sut.GetAsync(query).ConfigureAwait(true);
 
-		Assert.True(actual.IsPlayerExists);
+		Assert.True(actual.IsPlayerExist);
 		Assert.Equal(66.6m, actual.Balance);
 	}
 }
