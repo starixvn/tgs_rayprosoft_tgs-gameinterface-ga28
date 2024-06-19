@@ -86,8 +86,7 @@ message GameRecordInfo {
 	string external_bet_id = 2;
 	string external_round_id = 3;
 	string external_game_id = 4;
-	bool is_closed = 5;
-	RecordResult Result = 6;
+	GameRecordResult Result = 6;
 	google.protobuf.Timestamp ExternalCreatedOn = 7;
 	google.protobuf.Timestamp ExternalClosedOn = 8;
 	phoenix.protobuf.DecimalValue Bet = 9;
@@ -101,18 +100,11 @@ message CheckingServiceReply{
 	string MachineName = 1;
 }
 
-enum RecordStatus {
-	RECORD_STATUS_OPENED = 0;
-	RECORD_STATUS_SETTLED = 1;
-	RECORD_STATUS_CANCELED = 2;
-	RECORD_STATUS_VOIDED = 3;
-}
-
-enum RecordResult {
-	RECORD_RESULT_NONE = 0;
-	RECORD_RESULT_WIN = 1;
-	RECORD_RESULT_LOSS = 2;
-	RECORD_RESULT_DRAW = 3;
-	RECORD_RESULT_VOID = 4;
-	RECORD_RESULT_CANCELLED = 5;
+enum GameRecordResult {
+	GAME_RECORD_RESULT_NONE = 0;
+	GAME_RECORD_RESULT_WIN = 1;
+	GAME_RECORD_RESULT_LOSS = 2;
+	GAME_RECORD_RESULT_DRAW = 3;
+	GAME_RECORD_RESULT_VOID = 4;
+	GAME_RECORD_RESULT_CANCELLED = 5;
 }

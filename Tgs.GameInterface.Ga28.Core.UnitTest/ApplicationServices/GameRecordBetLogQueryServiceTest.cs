@@ -83,7 +83,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		Assert.Equal("4ucmqplxb029", item.PlayerCode);
 		Assert.Equal("190103969DD96J562D", item.ExternalBetId);
 		Assert.Equal("ph#74 M000478", item.ExternalRoundId);
-		Assert.Equal(Protos.RecordResult.Win, item.Result);
+		Assert.Equal(Protos.GameRecordResult.Win, item.Result);
 		Assert.Equal(new DateTimeOffset(2024, 06, 13, 14, 11, 56, 510, 124, TimeSpan.FromHours(8)), item.ExternalCreatedOn);
 		Assert.Equal(new DateTimeOffset(2024, 06, 13, 14, 12, 29, 238, 152, TimeSpan.FromHours(8)), item.ExternalClosedOn);
 		Assert.Equal(10m, item.Bet);
@@ -169,7 +169,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		Assert.Equal("4ucmqplxb029", item.PlayerCode);
 		Assert.Equal("19010170AE3VA8I515", item.ExternalBetId);
 		Assert.Equal("ph#67 M000478", item.ExternalRoundId);
-		Assert.Equal(Protos.RecordResult.Loss, item.Result);
+		Assert.Equal(Protos.GameRecordResult.Loss, item.Result);
 		Assert.Equal(new DateTimeOffset(2024, 06, 13, 13, 34, 23, 971, 488, TimeSpan.FromHours(8)), item.ExternalCreatedOn);
 		Assert.Equal(new DateTimeOffset(2024, 06, 13, 13, 37, 15, 305, 415, TimeSpan.FromHours(8)), item.ExternalClosedOn);
 		Assert.Equal(1m, item.Bet);
@@ -255,7 +255,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		Assert.Equal("4ucmqplxb029", item.PlayerCode);
 		Assert.Equal("190291442B0CIF1309", item.ExternalBetId);
 		Assert.Equal("ph#25 M000485", item.ExternalRoundId);
-		Assert.Equal(Protos.RecordResult.Void, item.Result);
+		Assert.Equal(Protos.GameRecordResult.Void, item.Result);
 		Assert.Equal(DateTimeOffset.Parse("2024-06-18T02:01:52.049269Z"), item.ExternalCreatedOn);
 		Assert.Equal(DateTimeOffset.Parse("2024-06-18T02:19:08.847127Z"), item.ExternalClosedOn);
 		Assert.Equal(9.85m, item.Bet);
@@ -341,7 +341,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		Assert.Equal("4ucmqplxb029", item.PlayerCode);
 		Assert.Equal("190290D99C1D4UQ2E3", item.ExternalBetId);
 		Assert.Equal("ph#23 M000485", item.ExternalRoundId);
-		Assert.Equal(Protos.RecordResult.Cancelled, item.Result);
+		Assert.Equal(Protos.GameRecordResult.Cancelled, item.Result);
 		Assert.Equal(DateTimeOffset.Parse("2024-06-18T01:54:35.585921Z"), item.ExternalCreatedOn);
 		Assert.Equal(DateTimeOffset.Parse("2024-06-18T02:55:37.310049Z"), item.ExternalClosedOn);
 		Assert.Equal(10.00m, item.Bet);
@@ -427,7 +427,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 		Assert.Equal("4ucmqplxb029", item.PlayerCode);
 		Assert.Equal("19010170AE3VA8I515", item.ExternalBetId);
 		Assert.Equal("ph#67 M000478", item.ExternalRoundId);
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 		Assert.Equal(new DateTimeOffset(2024, 06, 13, 13, 34, 23, 971, 488, TimeSpan.FromHours(8)), item.ExternalCreatedOn);
 		Assert.Equal(DateTimeOffset.UnixEpoch, item.ExternalClosedOn);
 		Assert.Equal(1m, item.Bet);
@@ -510,7 +510,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -586,7 +586,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -662,7 +662,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -738,7 +738,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -814,7 +814,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -890,7 +890,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -966,7 +966,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -1042,7 +1042,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -1118,7 +1118,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -1194,7 +1194,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -1270,7 +1270,7 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 
 	[Fact]
@@ -1346,6 +1346,6 @@ public sealed class GameRecordBetLogQueryServiceTest
 
 		Assert.Single(actual);
 		var item = actual[0];
-		Assert.Equal(Protos.RecordResult.None, item.Result);
+		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
 }

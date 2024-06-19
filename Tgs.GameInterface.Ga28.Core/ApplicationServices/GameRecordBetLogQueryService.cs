@@ -15,12 +15,11 @@ public sealed class GameRecordBetLogQueryService(IGameApiClient apiClient) : IQu
 			pageSize: query.PageSize,
 			fromModifiedTime: query.StartTime,
 			toModifiedTime: query.EndTime,
-
 			cancellationToken);
 
 		await foreach (var item in response)
 		{
-			var result = Protos.RecordResult.None;
+			var result = Protos.GameRecordResult.None;
 			var externalRoundId = string.Concat(item.ArenaCode, "#", item.FightNumber, " ", item.MatchDayCode);
 			var externalClosedOn = DateTimeOffset.UnixEpoch;
 
@@ -28,14 +27,14 @@ public sealed class GameRecordBetLogQueryService(IGameApiClient apiClient) : IQu
 			{
 				result = item.Result.ToLower() switch
 				{
-					"win" => Protos.RecordResult.Win,
-					"loss" => Protos.RecordResult.Loss,
-					"draw" => Protos.RecordResult.Draw,
-					"cancelled" => Protos.RecordResult.Cancelled,
-					_ => Protos.RecordResult.Void,
+					"win" => Protos.GameRecordResult.Win,
+					"loss" => Protos.GameRecordResult.Loss,
+					"draw" => Protos.GameRecordResult.Draw,
+					"cancelled" => Protos.GameRecordResult.Cancelled,
+					_ => Protos.GameRecordResult.Void,
 				};
 
-				externalClosedOn = result is not Protos.RecordResult.Cancelled and not Protos.RecordResult.Void ? item.SettledDateTime : item.ModifiedDateTime;
+				externalClosedOn = result is not Protos.GameRecordResult.Cancelled and not Protos.GameRecordResult.Void ? item.SettledDateTime : item.ModifiedDateTime;
 			}
 
 			yield return new GameRecordBetLogResult(

@@ -352,7 +352,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 			PlayerCode: "4ucmqplxb029",
 			ExternalBetId: "190103969DD96J562D",
 			ExternalRoundId: "74",
-			Result: RecordResult.Win,
+			Result: GameRecordResult.Win,
 			ExternalCreatedOn: new DateTimeOffset(2024, 06, 13, 14, 11, 56, 510, 124, TimeSpan.FromHours(8)),
 			ExternalClosedOn: new DateTimeOffset(2024, 06, 13, 14, 12, 29, 238, 152, TimeSpan.FromHours(8)),
 			Bet: 10m,
@@ -393,7 +393,7 @@ public sealed class GameInterfaceGa28GrpcServiceTests
 		Assert.Equal("4ucmqplxb029", item.PlayerCode);
 		Assert.Equal("190103969DD96J562D", item.ExternalBetId);
 		Assert.Equal("74", item.ExternalRoundId);
-		Assert.Equal(RecordResult.Win, item.Result);
+		Assert.Equal(GameRecordResult.Win, item.Result);
 		Assert.Equal(new DateTimeOffset(2024, 06, 13, 14, 11, 56, 510, 124, TimeSpan.FromHours(8)), item.ExternalCreatedOn.ToDateTimeOffset());
 		Assert.Equal(new DateTimeOffset(2024, 06, 13, 14, 12, 29, 238, 152, TimeSpan.FromHours(8)), item.ExternalClosedOn.ToDateTimeOffset());
 		Assert.Equal(10m, item.Bet.ToDecimal());

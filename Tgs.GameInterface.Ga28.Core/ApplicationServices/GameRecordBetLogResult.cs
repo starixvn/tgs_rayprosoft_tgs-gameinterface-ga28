@@ -4,7 +4,7 @@ public sealed record class GameRecordBetLogResult(
 	string PlayerCode,
 	string ExternalBetId,
 	string ExternalRoundId,
-	Protos.RecordResult Result,
+	Protos.GameRecordResult Result,
 	DateTimeOffset ExternalCreatedOn,
 	DateTimeOffset ExternalClosedOn,
 	decimal Bet,
