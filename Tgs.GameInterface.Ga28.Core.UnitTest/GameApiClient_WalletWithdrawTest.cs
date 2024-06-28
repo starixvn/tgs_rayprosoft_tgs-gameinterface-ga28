@@ -61,6 +61,58 @@ public sealed class GameApiClient_WalletWithdrawTest
 	}
 
 	[Fact]
+	public async Task Normal_Process_WhenHttpCreatedResponse()
+	{
+		var apiBaseUrl = new Uri("http://partner-api.dev.ga28.cc");
+		var privateKey = "8456c9de-d589-4e8a-876f-c9c8e48dda3e";
+		var memberRefId = "4ucmqplxb029";
+		var amount = 16m;
+		var refId = "01905caa77b50000000107e8cbe2eeda";
+		var parameters = new Dictionary<string, string>
+		{
+			["member_ref_id"] = memberRefId,
+			["amount"] = amount.ToString("0.##"),
+			["ref_id"] = refId,
+		};
+		var response = JsonNode.Parse("""
+		{
+			"balance": "0",
+			"wallet_transaction": {
+				"id": "eea84476-726c-4b97-93ec-d97cde5a0319",
+				"date_time_created": "2024-06-28T02:26:34.128366591Z",
+				"amount": "-1",
+				"ref_id": "01905caa77b50000000107e8cbe2eeda",
+				"description": "",
+				"member_ref_id": "4umv37wchzks",
+				"type": 8
+			}
+		}
+		""")!;
+		var handler = new MockHttpMessageHandler();
+		_ = handler
+			.Expect(HttpMethod.Post, new Uri(apiBaseUrl, "/api/v1/wallet/withdraw").ToString())
+			.WithHeaders("Authorization", privateKey)
+			.WithJsonContent(parameters)
+			.Respond(HttpStatusCode.Created, JsonContent.Create(response));
+		var fakeHttpClient = handler.ToHttpClient();
+		var fakeLogger = NullLogger<GameApiClient>.Instance;
+		var sut = new GameApiClient(fakeLogger, fakeHttpClient);
+
+		var actual = await sut.WalletWithdrawAsync(
+			apiBaseUrl,
+			privateKey,
+			memberRefId,
+			amount,
+			refId)
+			.ConfigureAwait(true);
+
+		Assert.Equal("eea84476-726c-4b97-93ec-d97cde5a0319", actual.Id);
+		Assert.Equal("01905caa77b50000000107e8cbe2eeda", actual.RefId);
+		Assert.Equal(0m, actual.Balance);
+		Assert.Equal(response.ToJsonString(), actual.Resp);
+	}
+
+	[Fact]
 	public async Task ThrowHttpRequestExpection_WhenStatusCodeBadRequest_InsufficientBalance()
 	{
 		var apiBaseUrl = new Uri("http://partner-api.dev.ga28.cc");
