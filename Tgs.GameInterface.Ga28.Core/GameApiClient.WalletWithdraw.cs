@@ -26,20 +26,19 @@ internal sealed partial class GameApiClient
 			cancellationToken)
 			.ConfigureAwait(false);
 
-		var response = (statusCode, responseContent) switch
-		{
-			(HttpStatusCode.OK, string json) when JsonNode.Parse(json) is JsonNode node
-				=> new WalletTransactionResponse(
-					Id: node["wallet_transaction"]!["id"]!.GetValue<string>()!,
-					RefId: node["wallet_transaction"]!["ref_id"]!.GetValue<string>(),
-					Balance: decimal.Parse(node["balance"]!.GetValue<string>()),
-					Resp: node.ToJsonString()),
+		if (statusCode == HttpStatusCode.BadRequest)
+			throw new HttpRequestException(HttpRequestError.InvalidResponse, message: "餘額不足", statusCode: statusCode);
 
-			(HttpStatusCode.BadRequest, _) // 餘額不足時會回這個
-				=> throw new HttpRequestException(HttpRequestError.InvalidResponse, message: "餘額不足", statusCode: statusCode),
+		if ((int)statusCode is < 200 or > 299)
+			throw new HttpRequestException(HttpRequestError.InvalidResponse, message: responseContent, statusCode: statusCode);
 
-			_ => throw new HttpRequestException(HttpRequestError.InvalidResponse, message: responseContent, statusCode: statusCode)
-		};
+		var node = JsonNode.Parse(responseContent!)!;
+
+		var response = new WalletTransactionResponse(
+			Id: node["wallet_transaction"]!["id"]!.GetValue<string>()!,
+			RefId: node["wallet_transaction"]!["ref_id"]!.GetValue<string>(),
+			Balance: decimal.Parse(node["balance"]!.GetValue<string>()),
+			Resp: node.ToJsonString());
 
 		return response;
 	}
