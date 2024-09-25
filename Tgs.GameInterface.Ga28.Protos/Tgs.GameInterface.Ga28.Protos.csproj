@@ -7,10 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Grpc.AspNetCore" Version="2.63.0">
+		<PackageReference Include="Grpc.AspNetCore" Version="2.66.0">
 			<PrivateAssets></PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.63.0">
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.66.0">
 			<PrivateAssets></PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="PhoenixToolkits.Protobuf.ExtendTypes" Version="0.0.7">

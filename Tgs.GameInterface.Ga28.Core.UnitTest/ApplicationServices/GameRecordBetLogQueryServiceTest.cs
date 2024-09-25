@@ -1348,4 +1348,90 @@ public sealed class GameRecordBetLogQueryServiceTest
 		var item = actual[0];
 		Assert.Equal(Protos.GameRecordResult.None, item.Result);
 	}
+
+	[Fact]
+	public async Task Selection_Is_Draw_Settled_Is_loss()
+	{
+		var query = new GameRecordBetLogQuery(
+			ApiUrl: new("http://partner-api.dev.ga28.cc"),
+			PrivateKey: "8456c9de-d589-4e8a-876f-c9c8e48dda3e",
+			PartnerAccountId: "99a6f8ef-38a6-4f31-b69a-e222c2a54771",
+			StartTime: new DateTimeOffset(2024, 06, 14, 10, 16, 00, TimeSpan.FromHours(8)),
+			EndTime: new DateTimeOffset(2024, 06, 14, 12, 16, 00, TimeSpan.FromHours(8)),
+			Page: 1,
+			PageSize: 32);
+		var json = JsonNode.Parse("""
+		[
+			{
+				"sid": "192199517A2IY1MB13",
+				"created_date_time": "2024-09-22T11:54:14.306428Z",
+				"modified_date_time": "2024-09-22T11:57:19.802156Z",
+				"arena_code": "ph",
+				"match_day_code": "M000593",
+				"fight_number": 167,
+				"selection": "draw",
+				"odds": "9",
+				"bet_amount": "50",
+				"valid_stake": "0",
+				"ticket_amount": "50",
+				"ante_amount": "0",
+				"status": 4,
+				"result": "loss",
+				"member_ref_id": "4ui0010qu2m0",
+				"account_id": "6d92c392-db4f-4e74-a3c5-3ab5ccacd115",
+				"currency_code": "PHP",
+				"win_loss_amount": "-50",
+				"odds_type": "eu",
+				"settled_date_time": "2024-09-22T11:57:19.624166Z",
+				"ip_address": "110.54.152.187",
+				"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36"
+			}
+		]
+		""")!;
+		var response = new TicketResponseItem(
+			Sid: "192199517A2IY1MB13",
+			CreatedDateTime: DateTimeOffset.Parse("2024-09-22T11:54:14.306428Z"),
+			ModifiedDateTime: DateTimeOffset.Parse("2024-09-22T11:57:19.802156Z"),
+			SettledDateTime: DateTimeOffset.Parse("2024-09-22T11:57:19.624166Z"),
+			ArenaCode: "ph",
+			MatchDayCode: "M000593",
+			FightNumber: 167,
+			BetAmount: 50m,
+			ValidStake: 0m,
+			TicketAmount: 50m,
+			AnteAmount: 0m,
+			WinLossAmount: -50m,
+			Status: ApiBetStatus.BetSettled,
+			Result: "loss",
+			MemberRefId: "4ui0010qu2m0",
+			AdditionalData: json.ToJsonString());
+		var fakeGameApiClient = Substitute.For<IGameApiClient>();
+		_ = fakeGameApiClient
+			.TicketsAsync(
+				apiBaseUrl: Arg.Is(query.ApiUrl),
+				privateKey: Arg.Is(query.PrivateKey),
+				partnerAccountId: Arg.Is(query.PartnerAccountId),
+				page: Arg.Is(query.Page),
+				pageSize: Arg.Is(query.PageSize),
+				fromModifiedTime: Arg.Is(query.StartTime),
+				toModifiedTime: Arg.Is(query.EndTime))
+			.Returns(new[] { response }.ToAsyncEnumerable());
+		var sut = new GameRecordBetLogQueryService(fakeGameApiClient);
+
+		var actual = await sut.QueryAsync(query).ToArrayAsync().ConfigureAwait(true);
+
+		Assert.Single(actual);
+		var item = actual[0];
+		Assert.Equal("4ui0010qu2m0", item.PlayerCode);
+		Assert.Equal("192199517A2IY1MB13", item.ExternalBetId);
+		Assert.Equal("ph#167 M000593", item.ExternalRoundId);
+		Assert.Equal(Protos.GameRecordResult.Loss, item.Result);
+		Assert.Equal(new DateTimeOffset(2024, 09, 22, 19, 54, 14, 306, 428, TimeSpan.FromHours(8)), item.ExternalCreatedOn);
+		Assert.Equal(new DateTimeOffset(2024, 09, 22, 19, 57, 19, 624, 166, TimeSpan.FromHours(8)), item.ExternalClosedOn);
+		Assert.Equal(50m, item.Bet);
+		Assert.Equal(0m, item.ValidBet);
+		Assert.Equal(0m, item.Settle);
+		Assert.Equal(-50m, item.WinLoss);
+		Assert.Equal(json.ToJsonString(), item.AdditionalData);
+	}
 }
