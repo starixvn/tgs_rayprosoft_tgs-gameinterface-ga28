@@ -46,7 +46,7 @@ public sealed class GameRecordBetLogQueryService(IGameApiClient apiClient) : IQu
 				ExternalClosedOn: externalClosedOn,
 				Bet: item.BetAmount,
 				ValidBet: item.ValidStake,
-				Settle: item.ValidStake + item.WinLossAmount,
+				Settle: (result != Protos.GameRecordResult.Loss) ? item.ValidStake + item.WinLossAmount : 0.0m,
 				WinLoss: item.WinLossAmount,
 				AdditionalData: item.AdditionalData);
 		}
